@@ -18,7 +18,7 @@
     <input type="checkbox" id="sidebar-state" checked hidden>
 
     <div class="main-wrapper">
-        
+
         <aside class="medical-sidebar">
             <div class="sidebar-header">
                 <div class="sidebar-brand">
@@ -133,11 +133,15 @@
                                 <span class="user-name">Arjun Deloterio</span>
                                 <span class="user-role">Administrator</span>
                             </div>
-                            <div class="user-avatar">AD</div>
+                            <div class="user-avatar" id="avatar-wrapper">
+                                <span class="material-symbols-rounded" id="avatar-icon">person</span>
+
+                                <img src="" alt="User" id="header-avatar-img" class="hidden">
+                            </div>
                         </div>
                         <div class="header-dropdown" id="profile-dropdown">
                             <div class="dropdown-header">My Account</div>
-                            <a href="#" class="dropdown-item">
+                            <a href="admin_profile.html" class="dropdown-item">
                                 <span class="material-symbols-rounded">person</span>Profile Settings
                             </a>
                             <a href="#" class="dropdown-item">
@@ -231,10 +235,16 @@
                             onclick="document.getElementById('id-upload').click()">
                             <span class="material-symbols-rounded upload-icon">add_a_photo</span>
                             <p><strong>Click to upload</strong> or drag and drop</p>
-                            <p style="font-size: 0.75rem;">PNG, JPG or PDF (Max 5MB)</p>
+                            <p style="font-size: 0.75rem;">PNG, JPG (Max 5MB)</p>
 
-                            <input type="file" id="id-upload" hidden accept="image/*, .pdf"
-                                onchange="updateUploadUI('id-dropzone', 'id-preview-text', 'file-name-display', this.files)">
+                            <input type="file" id="id-upload" hidden accept="image/*"
+                                onchange="updateUploadUI('id-dropzone', 'id-preview-text', 'file-name-display', this)">
+
+                            <div id="registration-id-preview-container"
+                                style="display:none; margin: 10px auto; width: 120px; height: 80px; border-radius: 6px; overflow: hidden; border: 1px solid #e2e8f0;">
+                                <img id="registration-id-img" src=""
+                                    style="width: 100%; height: 100%; object-fit: cover;">
+                            </div>
 
                             <div id="id-preview-text" class="preview-active-box" style="display:none;">
                                 <div class="preview-info">
@@ -419,26 +429,40 @@
 
         // --- REUSABLE RESET LOGIC ---
         function resetUpload(event, inputId, dropzoneId, previewId) {
-            // Stop the click from triggering the dropzone's onclick (opening the file browser)
             event.stopPropagation();
 
             const input = document.getElementById(inputId);
             const dropzone = document.getElementById(dropzoneId);
             const preview = document.getElementById(previewId);
+            const previewContainer = document.getElementById('registration-id-preview-container');
 
-            input.value = ""; // Clear the file input
-            preview.style.display = 'none'; // Hide preview
-            dropzone.style.borderColor = '#cbd5e1'; // Reset border color
-            dropzone.style.background = '#f8fafc'; // Reset background
+            input.value = "";
+            preview.style.display = 'none';
+            if (previewContainer) previewContainer.style.display = 'none'; // Hide image preview
+
+            dropzone.style.borderColor = '#cbd5e1';
+            dropzone.style.background = '#f8fafc';
         }
-
         // --- UPDATED UI LOGIC ---
-        function updateUploadUI(dropzoneId, previewId, nameId, files) {
+        function updateUploadUI(dropzoneId, previewId, nameId, input) {
+            const files = input.files;
             if (files && files[0]) {
-                document.getElementById(previewId).style.display = 'flex'; // Use flex for alignment
+                // Handle Text & Colors
+                document.getElementById(previewId).style.display = 'flex';
                 document.getElementById(nameId).innerText = files[0].name;
-                document.getElementById(dropzoneId).style.borderColor = '#10b981';
-                document.getElementById(dropzoneId).style.background = '#f0fdf4'; // Light green tint
+                const dropzone = document.getElementById(dropzoneId);
+                dropzone.style.borderColor = '#10b981';
+                dropzone.style.background = '#f0fdf4';
+
+                // Handle Image Preview
+                const reader = new FileReader();
+                reader.onload = function (e) {
+                    const previewImg = document.getElementById('registration-id-img');
+                    const previewContainer = document.getElementById('registration-id-preview-container');
+                    previewImg.src = e.target.result;
+                    previewContainer.style.display = 'block';
+                }
+                reader.readAsDataURL(files[0]);
             }
         }
 
@@ -471,6 +495,24 @@
         // Initialize for ID
         initDragAndDrop('id-dropzone', 'id-upload', 'id-preview-text', 'file-name-display');
 
+        function previewFile(input, targetImageId) {
+            const file = input.files[0];
+            const previewImg = document.getElementById(targetImageId);
+            const container = previewImg.parentElement;
+
+            if (file) {
+                const reader = new FileReader();
+
+                reader.onload = function (e) {
+                    // Set the src of the <img> to the file's data
+                    previewImg.src = e.target.result;
+                    // Show the container
+                    container.style.display = 'block';
+                }
+
+                reader.readAsDataURL(file);
+            }
+        }
     </script>
 </body>
 
