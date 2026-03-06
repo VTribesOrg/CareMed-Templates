@@ -80,7 +80,8 @@
                         <div class="input-field">
                             <div class="label-flex">
                                 <label>Password</label>
-                                <a href="#" class="helper-link">Forgot Password?</a>
+                                <a href="javascript:void(0)" class="helper-link" onclick="openForgotModal()">Forgot
+                                    Password?</a>
                             </div>
                             <div class="input-group">
                                 <i class="fa-solid fa-lock"></i>
@@ -193,6 +194,71 @@
         </div>
     </div>
 
+
+    <!------------------------------------------ MODAL SPACE --------------------------------------------------->
+
+    <div id="forgotPasswordModal" class="modal-overlay">
+        <div class="modal-container">
+            <button class="close-modal" onclick="closeForgotModal()">&times;</button>
+
+            <div id="emailStep">
+                <div class="header-text">
+                    <h2>Forgot Password?</h2>
+                    <p class="subtitle">Enter your email to receive a 6-digit security code.</p>
+                </div>
+                <div class="input-field">
+                    <label>Email Address</label>
+                    <div class="input-group">
+                        <i class="fa-solid fa-envelope"></i>
+                        <input type="email" id="resetEmail" placeholder="name@example.com">
+                    </div>
+                </div>
+                <button class="btn-primary" id="sendCodeBtn" onclick="handleSendCode()">
+                    <span class="btn-text">Send Code</span>
+                    <div class="spinner" id="btnSpinner" style="display: none;"></div>
+                </button>
+            </div>
+
+            <div id="otpStep" style="display: none;">
+                <div class="header-text">
+                    <h2>Reset Password</h2>
+                    <p class="subtitle">Enter the 6-digit code and your new credentials.</p>
+                </div>
+
+                <label>Security Code</label>
+                <div class="otp-input-wrapper">
+                    <input type="text" maxlength="1" class="otp-digit">
+                    <input type="text" maxlength="1" class="otp-digit">
+                    <input type="text" maxlength="1" class="otp-digit">
+                    <input type="text" maxlength="1" class="otp-digit">
+                    <input type="text" maxlength="1" class="otp-digit">
+                    <input type="text" maxlength="1" class="otp-digit">
+                </div>
+
+                <div class="input-field" style="margin-top: 25px;">
+                    <label>New Password</label>
+                    <div class="input-group">
+                        <i class="fa-solid fa-lock"></i>
+                        <input type="password" placeholder="••••••••">
+                        <i class="fa-solid fa-eye-slash toggle-pass"></i>
+                    </div>
+                </div>
+
+                <div class="input-field">
+                    <label>Confirm New Password</label>
+                    <div class="input-group">
+                        <i class="fa-solid fa-lock"></i>
+                        <input type="password" placeholder="••••••••">
+                        <i class="fa-solid fa-eye-slash toggle-pass"></i>
+                    </div>
+                </div>
+
+                <button class="btn-primary" style="margin-top: 10px;">Update Password</button>
+                <p class="footer-note">Didn't get a code? <a href="#">Resend</a></p>
+            </div>
+        </div>
+    </div>
+
     <script>
         function toggleForms() {
             const loginArea = document.getElementById('loginArea');
@@ -224,6 +290,59 @@
                         this.classList.add('fa-eye-slash');
                     }
                 });
+            });
+        });
+
+
+
+        function handleSendCode() {
+            const btn = document.getElementById('sendCodeBtn');
+            const text = btn.querySelector('.btn-text');
+            const spinner = document.getElementById('btnSpinner');
+
+            // Start Loading State
+            text.style.display = 'none';
+            spinner.style.display = 'block';
+            btn.style.pointerEvents = 'none';
+            btn.style.opacity = '0.8';
+
+            // Simulate API Call (2 seconds)
+            setTimeout(() => {
+                showOtpStep();
+                // Reset button for next time
+                text.style.display = 'block';
+                spinner.style.display = 'none';
+                btn.style.pointerEvents = 'all';
+                btn.style.opacity = '1';
+            }, 2000);
+        }
+
+        function showOtpStep() {
+            document.getElementById('emailStep').style.display = 'none';
+            document.getElementById('otpStep').style.display = 'block';
+        }
+
+        function openForgotModal() {
+            document.getElementById('forgotPasswordModal').style.display = 'flex';
+        }
+
+        function closeForgotModal() {
+            document.getElementById('forgotPasswordModal').style.display = 'none';
+            document.getElementById('emailStep').style.display = 'block';
+            document.getElementById('otpStep').style.display = 'none';
+        }
+
+        // Auto-focus logic for OTP boxes
+        document.querySelectorAll('.otp-digit').forEach((input, index, inputs) => {
+            input.addEventListener('input', () => {
+                if (input.value.length === 1 && index < inputs.length - 1) {
+                    inputs[index + 1].focus();
+                }
+            });
+            input.addEventListener('keydown', (e) => {
+                if (e.key === 'Backspace' && input.value.length === 0 && index > 0) {
+                    inputs[index - 1].focus();
+                }
             });
         });
     </script>
