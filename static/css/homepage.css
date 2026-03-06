@@ -1,3 +1,10 @@
+/* CareMed Global Styles 
+   Color Palette: 
+   - Primary Blue: #002347
+   - Accent Blue: #38bdf8
+   - Hover Blue: #007bff
+*/
+
 * {
     margin: 0;
     padding: 0;
@@ -36,7 +43,7 @@ nav {
 }
 
 .nav-logo span {
-    color: #52B788; 
+    color: #38bdf8; /* Changed from green to Accent Blue */
 }
 
 .nav-links {
@@ -57,23 +64,20 @@ nav {
 }
 
 .nav-links a:hover {
-    color: #52B788;
+    color: #38bdf8; /* Accent Blue Hover */
 }
 
-/* --- Auth Visibility Logic --- */
 .auth-only { display: none !important; }
 .guest-only { display: flex !important; }
 
 body.logged-in .auth-only { display: flex !important; }
 body.logged-in .guest-only { display: none !important; }
 
-/* Fix for dropdown menu when logged-in */
 body.logged-in .dropdown-menu { display: none !important; }
 body.logged-in .dropdown-menu.show { display: flex !important; flex-direction: column; }
 
-/* --- Highlighted Shop Link --- */
 .nav-shop-link {
-    color: #52B788 !important;
+    color: #38bdf8 !important; /* Updated link color */
     font-weight: 600;
     display: flex;
     align-items: center;
@@ -81,7 +85,6 @@ body.logged-in .dropdown-menu.show { display: flex !important; flex-direction: c
     text-decoration: none;
 }
 
-/* Navigation Buttons */
 .nav-account-btn {
     color: #333;
     text-decoration: none;
@@ -92,11 +95,11 @@ body.logged-in .dropdown-menu.show { display: flex !important; flex-direction: c
 }
 
 .nav-account-btn:hover {
-    color: #52B788;
+    color: #38bdf8;
 }
 
 .nav-cta-btn {
-    background-color: #52B788;
+    background-color: #38bdf8; /* Updated CTA color */
     color: white !important;
     padding: 10px 25px;
     border-radius: 50px;
@@ -106,10 +109,9 @@ body.logged-in .dropdown-menu.show { display: flex !important; flex-direction: c
 }
 
 .nav-cta-btn:hover {
-    background-color: #40916c;
+    background-color: #007bff; /* Darker blue for hover */
 }
 
-/* Mobile Buttons */
 .mobile-account-btn {
     background: #f8f9fa;
     color: #333 !important;
@@ -125,12 +127,10 @@ body.logged-in .dropdown-menu.show { display: flex !important; flex-direction: c
     text-decoration: none;
 }
 
-/* Red logout for mobile */
 .logout-link-mobile { color: #e63946 !important; }
 
-/* --- Login / Logout Buttons --- */
 .login-btn {
-    background: linear-gradient(135deg, #52B788 0%, #40916c 100%);
+    background: linear-gradient(135deg, #002347 0%, #003a75 100%); /* Blue gradient matches login page */
     color: white !important;
     padding: 10px 24px;
     border-radius: 50px; 
@@ -143,20 +143,20 @@ body.logged-in .dropdown-menu.show { display: flex !important; flex-direction: c
     align-items: center;
     justify-content: center;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    box-shadow: 0 4px 12px rgba(82, 183, 136, 0.3);
+    box-shadow: 0 4px 12px rgba(0, 35, 71, 0.3);
     border: none;
 }
 
 .login-btn:hover {
-    background: linear-gradient(135deg, #40916c 0%, #2d6a4f 100%);
+    background: linear-gradient(135deg, #003a75 0%, #007bff 100%);
     transform: translateY(-2px); 
-    box-shadow: 0 6px 15px rgba(82, 183, 136, 0.4);
+    box-shadow: 0 6px 15px rgba(0, 123, 255, 0.4);
     text-decoration: none;
 }
 
 .login-btn:active {
     transform: translateY(0);
-    box-shadow: 0 2px 8px rgba(82, 183, 136, 0.25);
+    box-shadow: 0 2px 8px rgba(0, 35, 71, 0.25);
 }
 
 .logout-btn {
@@ -174,7 +174,6 @@ body.logged-in .dropdown-menu.show { display: flex !important; flex-direction: c
     box-shadow: 0 4px 10px rgba(0, 35, 71, 0.2);
 }
 
-/* --- Hamburger / Mobile Drawer --- */
 .hamburger-icon {
     display: none; 
     cursor: pointer;
@@ -224,7 +223,7 @@ body.logged-in .dropdown-menu.show { display: flex !important; flex-direction: c
 
 .drawer-links a:hover {
     background: #f0f4f8;
-    color: #52B788;
+    color: #38bdf8;
     transform: translateX(5px);
 }
 
@@ -265,7 +264,6 @@ body.logged-in .dropdown-menu.show { display: flex !important; flex-direction: c
     .user-profile-widget { display: none; }
 }
 
-/* --- User Profile Widget --- */
 .user-profile-widget {
     position: relative;
     user-select: none;
@@ -291,7 +289,7 @@ body.logged-in .dropdown-menu.show { display: flex !important; flex-direction: c
 /*---------------------- START OF USER-AVATAR STYLE -------------------------------*/
 
 .icon-placeholder {
-    color: #52B788; 
+    color: #38bdf8; /* Blue placeholder icon */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -307,7 +305,7 @@ body.logged-in .dropdown-menu.show { display: flex !important; flex-direction: c
     align-items: center;
     justify-content: center;
     overflow: hidden; 
-    background-color: #f0f9f4; 
+    background-color: #f0f7ff; /* Changed from mint to pale blue */
     border-radius: 50%;
     flex-shrink: 0;
     transition: all 0.3s ease;
@@ -341,7 +339,7 @@ body.logged-in .dropdown-menu.show { display: flex !important; flex-direction: c
 
 .user-role {
     font-size: 11px;
-    color: #52B788;
+    color: #38bdf8; /* Accent Blue Role */
     font-weight: 600;
 }
 
@@ -374,7 +372,7 @@ body.logged-in .dropdown-menu.show { display: flex !important; flex-direction: c
 
 .dropdown-menu a:hover {
     background: #f8fafb;
-    color: #52B788 !important;
+    color: #38bdf8 !important; /* Accent Blue Hover */
 }
 
 .dropdown-menu hr {
@@ -428,8 +426,6 @@ body.logged-in .dropdown-menu.show { display: flex !important; flex-direction: c
     padding: 10px;
     margin-bottom: 20px;
 }
-
-
 
 /*------------------------- END OF THE NAVIGATION OR HEADER --------------------------*/
 

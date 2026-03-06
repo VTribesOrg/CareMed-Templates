@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CareMed | Secure Patient Portal</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/loginV2.css">
+</head>
+
+<body>
+
+    <div class="login-wrapper">
+        <div class="side-visual">
+            <div class="nav-header">
+                <a href="homepage.html" class="main-logo" title="Back to Homepage">
+                    Care<span>Med</span>
+                </a>
+                <a href="homepage.html" class="guest-btn-light">
+                    <i class="fa-solid fa-chevron-left"></i> Browse as Guest
+                </a>
+            </div>
+
+            <div class="visual-content">
+                <h1>Reliable care, <br>delivered to your door.</h1>
+                <p>Log in to manage your medical equipment rentals, track supplies, and access your secure patient
+                    dashboard.</p>
+
+                <div class="badge-group">
+                    <div class="trust-badge">
+                        <i class="fa-solid fa-truck-fast icon-blue"></i>
+                        <div>
+                            <strong>Same-Day Delivery</strong>
+                            <span>Available for local patients</span>
+                        </div>
+                    </div>
+
+                    <div class="trust-badge">
+                        <i class="fa-solid fa-shield-heart icon-blue"></i>
+                        <div>
+                            <strong>HIPAA Compliant</strong>
+                            <span>Your data is encrypted and secure</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="side-form">
+            <div class="form-container">
+
+                <div class="form-side-header">
+                    <a href="index.html" class="form-logo">Care<span>Med</span></a>
+                    <div class="form-tagline">Home Medical Equipment Rental Services</div>
+                </div>
+
+                <div class="mobile-logo-header">
+                    <a href="index.html" class="main-logo-dark">Care<span>Med</span></a>
+                    <a href="index.html" class="guest-pill">Guest Mode</a>
+                </div>
+
+                <div id="loginArea">
+                    <div class="header-text">
+                        <h2>Welcome Back</h2>
+                        <p class="subtitle">Log in to manage your orders and medical supplies.</p>
+                    </div>
+
+                    <form id="loginForm">
+                        <div class="input-field">
+                            <label>Email Address</label>
+                            <div class="input-group">
+                                <i class="fa-solid fa-envelope"></i>
+                                <input type="email" placeholder="name@example.com" required>
+                            </div>
+                        </div>
+
+                        <div class="input-field">
+                            <div class="label-flex">
+                                <label>Password</label>
+                                <a href="#" class="helper-link">Forgot Password?</a>
+                            </div>
+                            <div class="input-group">
+                                <i class="fa-solid fa-lock"></i>
+                                <input type="password" placeholder="••••••••" required>
+                                <i class="fa-solid fa-eye-slash toggle-pass"></i>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="btn-primary">
+                            Sign In <i class="fa-solid fa-arrow-right"></i>
+                        </button>
+                    </form>
+
+                    <div class="divider"><span>OR CONTINUE WITH</span></div>
+
+                    <button type="button" class="google-btn">
+                        <img src="https://www.svgrepo.com/show/355037/google.svg" alt="Google" width="18">
+                        Sign in with Google
+                    </button>
+
+                    <p class="footer-note">
+                        Don't have an account? <a onclick="toggleForms()">Create one now</a>
+                    </p>
+                </div>
+
+                <div id="signupForm" style="display: none;">
+                    <div class="header-text">
+                        <h2>Join CareMed</h2>
+                        <p class="subtitle">Create an account for faster checkout and order tracking.</p>
+                    </div>
+
+                    <form id="registerForm">
+                        <div class="form-row" style="display: flex; gap: 15px;">
+                            <div class="input-field" style="flex: 1;">
+                                <label>First Name</label>
+                                <div class="input-group">
+                                    <i class="fa-solid fa-user"></i>
+                                    <input type="text" placeholder="John" required>
+                                </div>
+                            </div>
+                            <div class="input-field" style="flex: 1;">
+                                <label>Last Name</label>
+                                <div class="input-group">
+                                    <i class="fa-solid fa-user"></i>
+                                    <input type="text" placeholder="Doe" required>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="input-field">
+                            <label>Email Address</label>
+                            <div class="input-group">
+                                <i class="fa-solid fa-envelope"></i>
+                                <input type="email" placeholder="name@example.com" required>
+                            </div>
+                        </div>
+
+                        <div class="input-field">
+                            <label>Phone Number</label>
+                            <div class="input-group">
+                                <i class="fa-solid fa-phone"></i>
+                                <input type="tel" placeholder="+1 (555) 000-0000" required>
+                            </div>
+                        </div>
+
+                        <div class="input-field">
+                            <label>Delivery Address</label>
+                            <div class="input-group">
+                                <i class="fa-solid fa-location-dot"></i>
+                                <input type="text" placeholder="123 Medical Way, Suite 100" required>
+                            </div>
+                        </div>
+
+                        <div class="form-row" style="display: flex; gap: 15px;">
+                            <div class="input-field" style="flex: 1;">
+                                <label>Password</label>
+                                <div class="input-group">
+                                    <i class="fa-solid fa-lock"></i>
+                                    <input type="password" placeholder="••••••••" required>
+                                    <i class="fa-solid fa-eye-slash toggle-pass"></i>
+                                </div>
+                            </div>
+                            <div class="input-field" style="flex: 1;">
+                                <label>Confirm Password</label>
+                                <div class="input-group">
+                                    <i class="fa-solid fa-lock"></i>
+                                    <input type="password" placeholder="••••••••" required>
+                                    <i class="fa-solid fa-eye-slash toggle-pass"></i>
+                                </div>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="btn-primary">
+                            Create Account <i class="fa-solid fa-user-plus"></i>
+                        </button>
+                    </form>
+
+                    <div class="divider"><span>OR JOIN WITH</span></div>
+
+                    <button type="button" class="google-btn">
+                        <img src="https://www.svgrepo.com/show/355037/google.svg" alt="Google" width="18">
+                        Sign up with Google
+                    </button>
+
+                    <p class="footer-note">
+                        Already have an account? <a onclick="toggleForms()">Log in here</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function toggleForms() {
+            const loginArea = document.getElementById('loginArea');
+            const signupForm = document.getElementById('signupForm');
+
+            if (loginArea.style.display === "none") {
+                loginArea.style.display = "block";
+                signupForm.style.display = "none";
+            } else {
+                loginArea.style.display = "none";
+                signupForm.style.display = "block";
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const toggleIcons = document.querySelectorAll('.toggle-pass');
+
+            toggleIcons.forEach(icon => {
+                icon.addEventListener('click', function () {
+                    const passwordInput = this.parentElement.querySelector('input');
+
+                    if (passwordInput.type === 'password') {
+                        passwordInput.type = 'text';
+                        this.classList.remove('fa-eye-slash');
+                        this.classList.add('fa-eye');
+                    } else {
+                        passwordInput.type = 'password';
+                        this.classList.remove('fa-eye');
+                        this.classList.add('fa-eye-slash');
+                    }
+                });
+            });
+        });
+    </script>
+
+</body>
+
+</html>

@@ -1,3 +1,10 @@
+/* CareMed Global Styles 
+   Color Palette: 
+   - Primary Blue: #002347
+   - Accent Blue: #38bdf8
+   - Hover Blue: #007bff
+*/
+
 * {
     margin: 0;
     padding: 0;
@@ -12,7 +19,6 @@ body {
     overflow-x: hidden;
 }
 
-/* --- Navigation --- */
 nav {
     width: 100%;
     background: rgba(255, 255, 255, 0.98);
@@ -37,7 +43,7 @@ nav {
 }
 
 .nav-logo span {
-    color: #52B788;
+    color: #38bdf8; /* Changed from green to Accent Blue */
 }
 
 .nav-links {
@@ -58,39 +64,20 @@ nav {
 }
 
 .nav-links a:hover {
-    color: #52B788;
+    color: #38bdf8; /* Accent Blue Hover */
 }
 
-/* --- Auth Visibility Logic --- */
-.auth-only {
-    display: none !important;
-}
+.auth-only { display: none !important; }
+.guest-only { display: flex !important; }
 
-.guest-only {
-    display: flex !important;
-}
+body.logged-in .auth-only { display: flex !important; }
+body.logged-in .guest-only { display: none !important; }
 
-body.logged-in .auth-only {
-    display: flex !important;
-}
+body.logged-in .dropdown-menu { display: none !important; }
+body.logged-in .dropdown-menu.show { display: flex !important; flex-direction: column; }
 
-body.logged-in .guest-only {
-    display: none !important;
-}
-
-/* Fix for dropdown menu when logged-in */
-body.logged-in .dropdown-menu {
-    display: none !important;
-}
-
-body.logged-in .dropdown-menu.show {
-    display: flex !important;
-    flex-direction: column;
-}
-
-/* --- Highlighted Shop Link --- */
 .nav-shop-link {
-    color: #52B788 !important;
+    color: #38bdf8 !important; /* Updated link color */
     font-weight: 600;
     display: flex;
     align-items: center;
@@ -98,7 +85,6 @@ body.logged-in .dropdown-menu.show {
     text-decoration: none;
 }
 
-/* Navigation Buttons */
 .nav-account-btn {
     color: #333;
     text-decoration: none;
@@ -109,11 +95,11 @@ body.logged-in .dropdown-menu.show {
 }
 
 .nav-account-btn:hover {
-    color: #52B788;
+    color: #38bdf8;
 }
 
 .nav-cta-btn {
-    background-color: #52B788;
+    background-color: #38bdf8; /* Updated CTA color */
     color: white !important;
     padding: 10px 25px;
     border-radius: 50px;
@@ -123,10 +109,9 @@ body.logged-in .dropdown-menu.show {
 }
 
 .nav-cta-btn:hover {
-    background-color: #40916c;
+    background-color: #007bff; /* Darker blue for hover */
 }
 
-/* Mobile Buttons */
 .mobile-account-btn {
     background: #f8f9fa;
     color: #333 !important;
@@ -142,17 +127,13 @@ body.logged-in .dropdown-menu.show {
     text-decoration: none;
 }
 
-/* Red logout for mobile */
-.logout-link-mobile {
-    color: #e63946 !important;
-}
+.logout-link-mobile { color: #e63946 !important; }
 
-/* --- Login / Logout Buttons --- */
 .login-btn {
-    background: linear-gradient(135deg, #52B788 0%, #40916c 100%);
+    background: linear-gradient(135deg, #002347 0%, #003a75 100%); /* Blue gradient matches login page */
     color: white !important;
     padding: 10px 24px;
-    border-radius: 50px;
+    border-radius: 50px; 
     font-weight: 600;
     font-size: 13px;
     text-transform: uppercase;
@@ -162,20 +143,20 @@ body.logged-in .dropdown-menu.show {
     align-items: center;
     justify-content: center;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    box-shadow: 0 4px 12px rgba(82, 183, 136, 0.3);
+    box-shadow: 0 4px 12px rgba(0, 35, 71, 0.3);
     border: none;
 }
 
 .login-btn:hover {
-    background: linear-gradient(135deg, #40916c 0%, #2d6a4f 100%);
-    transform: translateY(-2px);
-    box-shadow: 0 6px 15px rgba(82, 183, 136, 0.4);
+    background: linear-gradient(135deg, #003a75 0%, #007bff 100%);
+    transform: translateY(-2px); 
+    box-shadow: 0 6px 15px rgba(0, 123, 255, 0.4);
     text-decoration: none;
 }
 
 .login-btn:active {
     transform: translateY(0);
-    box-shadow: 0 2px 8px rgba(82, 183, 136, 0.25);
+    box-shadow: 0 2px 8px rgba(0, 35, 71, 0.25);
 }
 
 .logout-btn {
@@ -193,9 +174,8 @@ body.logged-in .dropdown-menu.show {
     box-shadow: 0 4px 10px rgba(0, 35, 71, 0.2);
 }
 
-/* --- Hamburger / Mobile Drawer --- */
 .hamburger-icon {
-    display: none;
+    display: none; 
     cursor: pointer;
     color: #002347;
     padding: 5px;
@@ -210,13 +190,13 @@ body.logged-in .dropdown-menu.show {
 .side-drawer {
     position: fixed;
     top: 0;
-    right: -320px;
+    right: -320px; 
     width: 300px;
     height: 100%;
     background: white;
     z-index: 3000;
     transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    box-shadow: -10px 0 30px rgba(0, 0, 0, 0.1);
+    box-shadow: -10px 0 30px rgba(0,0,0,0.1);
     padding: 25px;
     display: flex;
     flex-direction: column;
@@ -243,7 +223,7 @@ body.logged-in .dropdown-menu.show {
 
 .drawer-links a:hover {
     background: #f0f4f8;
-    color: #52B788;
+    color: #38bdf8;
     transform: translateX(5px);
 }
 
@@ -259,11 +239,11 @@ body.logged-in .dropdown-menu.show {
     backdrop-filter: blur(4px);
 }
 
-#nav-toggle:checked~.side-drawer {
-    right: 0;
+#nav-toggle:checked ~ .side-drawer {
+    right: 0; 
 }
 
-#nav-toggle:checked~.drawer-overlay {
+#nav-toggle:checked ~ .drawer-overlay {
     display: block;
 }
 
@@ -273,23 +253,17 @@ body.logged-in .dropdown-menu.show {
     }
 
     .nav-links {
-        display: none;
+        display: none; 
     }
 
     nav {
         padding: 10px 5%;
     }
 
-    .mobile-user-info {
-        display: flex;
-    }
-
-    .user-profile-widget {
-        display: none;
-    }
+    .mobile-user-info { display: flex; }
+    .user-profile-widget { display: none; }
 }
 
-/* --- User Profile Widget --- */
 .user-profile-widget {
     position: relative;
     user-select: none;
@@ -309,13 +283,13 @@ body.logged-in .dropdown-menu.show {
 
 .profile-trigger:hover {
     background: #ffffff;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
 }
 
 /*---------------------- START OF USER-AVATAR STYLE -------------------------------*/
 
 .icon-placeholder {
-    color: #52B788; 
+    color: #38bdf8; /* Blue placeholder icon */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -331,7 +305,7 @@ body.logged-in .dropdown-menu.show {
     align-items: center;
     justify-content: center;
     overflow: hidden; 
-    background-color: #f0f9f4; 
+    background-color: #f0f7ff; /* Changed from mint to pale blue */
     border-radius: 50%;
     flex-shrink: 0;
     transition: all 0.3s ease;
@@ -365,7 +339,7 @@ body.logged-in .dropdown-menu.show {
 
 .user-role {
     font-size: 11px;
-    color: #52B788;
+    color: #38bdf8; /* Accent Blue Role */
     font-weight: 600;
 }
 
@@ -376,10 +350,10 @@ body.logged-in .dropdown-menu.show {
     width: 200px;
     background: white;
     border-radius: 12px;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
     border: 1px solid #eee;
     padding: 8px 0;
-    display: none;
+    display: none; 
     flex-direction: column;
     z-index: 3000;
 }
@@ -398,7 +372,7 @@ body.logged-in .dropdown-menu.show {
 
 .dropdown-menu a:hover {
     background: #f8fafb;
-    color: #52B788 !important;
+    color: #38bdf8 !important; /* Accent Blue Hover */
 }
 
 .dropdown-menu hr {
@@ -408,18 +382,18 @@ body.logged-in .dropdown-menu.show {
 }
 
 .dropdown-menu .logout-item {
-    color: #e63946 !important;
+    color: #e63946 !important; 
     font-weight: 700;
     transition: all 0.2s ease;
 }
 
 .dropdown-menu .logout-item:hover {
-    background: #fff5f5 !important;
-    color: #c53030 !important;
+    background: #fff5f5 !important; 
+    color: #c53030 !important; 
 }
 
 .dropdown-menu .logout-item .material-symbols-outlined {
-    color: #e63946;
+    color: #e63946; 
 }
 
 .logout-link-mobile {
@@ -428,16 +402,16 @@ body.logged-in .dropdown-menu.show {
     gap: 10px;
     padding: 14px 20px;
     margin: 10px 0;
-    background-color: #fff5f5;
-    color: #e63946 !important;
+    background-color: #fff5f5; 
+    color: #e63946 !important; 
     border-radius: 12px;
     font-weight: 700;
     transition: all 0.2s ease;
-    border: 1px solid rgba(230, 57, 70, 0.1);
+    border: 1px solid rgba(230, 57, 70, 0.1); 
 }
 
 .logout-link-mobile:hover {
-    background-color: #fee2e2;
+    background-color: #fee2e2; 
     transform: translateX(5px);
 }
 
@@ -446,13 +420,12 @@ body.logged-in .dropdown-menu.show {
 }
 
 .mobile-user-info {
-    display: none;
+    display: none; 
     align-items: center;
     gap: 15px;
     padding: 10px;
     margin-bottom: 20px;
 }
-
 
 /*------------------------- END OF THE NAVIGATION OR HEADER --------------------------*/
 
